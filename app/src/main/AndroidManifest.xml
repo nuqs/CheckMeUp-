@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myapplication">
+
+    <application
+        android:allowBackup="true"
+        android:background="#E6E3E3"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/checkmeup"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".doc_current_ptvital"></activity>
+        <activity android:name=".doc_current_ptinfo" />
+        <activity android:name=".doc_current_pt" />
+        <activity android:name=".doc_current" />
+        <activity android:name=".doc_incoming" />
+        <activity android:name=".doc_update" />
+        <activity android:name=".doc_home" />
+        <activity android:name=".admin_register" />
+        <activity android:name=".admin_user_page" />
+        <activity android:name=".admin_ambu_page" />
+        <activity android:name=".admin_home" />
+        <activity android:name=".admin_login" />
+        <activity android:name=".doc_login" />
+        <activity android:name=".para_login" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
