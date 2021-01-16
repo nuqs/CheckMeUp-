@@ -41,7 +41,7 @@ public class doc_home extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void openIncoming() {
-        Intent intent = new Intent(this,doc_incoming.class);
+        Intent intent = new Intent(this,doc_ambu_page.class);
         startActivity(intent);
     }
 

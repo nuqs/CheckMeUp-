@@ -5,13 +5,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class frag_user_doc extends Fragment{
 
     Button button1, button2, button3, home;
+    ListView listView;
 
     public frag_user_doc() {
         // Required empty public constructor
@@ -26,6 +37,8 @@ public class frag_user_doc extends Fragment{
         button1 = v.findViewById(R.id.admin_doc);
         button2 = v.findViewById(R.id.admin_nurse);
         button3 = v.findViewById(R.id.admin_para);
+
+        listView = v.findViewById(R.id.listView);
 
         //open nurse
         button2.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +72,28 @@ public class frag_user_doc extends Fragment{
             }
         });
 
+        ArrayList <User> list = new ArrayList <>();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users").child("doctors");
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String staffID = ds.child("staffID").getValue().toString();
+                    String staffName = ds.child("staffName").getValue().toString();
+                    User user = new User(staffID, staffName);
+                    list.add(user);
+                }
+                UserListAdapter adapter = new UserListAdapter(getContext(), R.layout.list_item, list);
+                listView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        };
+
+        reference.addValueEventListener(eventListener);
 
         return v;
     }
