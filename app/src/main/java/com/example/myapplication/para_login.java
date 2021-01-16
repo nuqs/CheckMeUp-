@@ -41,7 +41,7 @@ public class para_login extends AppCompatActivity implements View.OnClickListene
                 openHome();
                 break;
             case R.id.button:
-                openParaStatus();
+                loginUser(v);
                 break;
         }
     }

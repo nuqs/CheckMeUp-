@@ -31,9 +31,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
                 openParaLogin();
                 break;
             case R.id.button2:
-                //openDocLogin();
-                Intent intent = new Intent(this, doc_current.class);
-                startActivity(intent);
+                openDocLogin();
                 break;
             case R.id.button3:
                 openAdminLogin();

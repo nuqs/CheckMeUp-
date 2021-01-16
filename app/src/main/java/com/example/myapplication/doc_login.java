@@ -40,7 +40,7 @@ public class doc_login extends AppCompatActivity implements View.OnClickListener
                 openHome();
                 break;
             case R.id.button:
-                openDocHome();
+                loginUser(v);
                 break;
         }
     }
